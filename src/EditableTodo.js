@@ -15,11 +15,16 @@ import TodoForm from "./TodoForm";
 function EditableTodo({ todo, update, remove }) {
 
   /** Toggle if this is being edited */
-  function toggleEdit(evt) {
-    let todoDiv = evt.target.parentElement.parentElement;
-    todoDiv.style.display = "none";
-    let todoFormDiv = document.querySelector(".EditableTodo-form");
-    todoFormDiv.style.display = "unset";
+  function toggleEdit() {
+    const todoDiv = document.getElementById(todo.id).parentElement;
+    const todoFormDiv = todoDiv.previousSibling;
+    if ( todoDiv.style.display === "none"){
+       todoDiv.style.display = "unset";
+       todoFormDiv.style.display = "none";
+    } else{
+      todoDiv.style.display = "none";
+      todoFormDiv.style.display = "unset";
+    }
   }
 
   /** Call remove fn passed to this. */
@@ -30,6 +35,7 @@ function EditableTodo({ todo, update, remove }) {
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
     update(formData);
+
   }
 
   return (
