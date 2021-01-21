@@ -16,8 +16,8 @@ function EditableTodo({ todo, update, remove }) {
 
   /** Toggle if this is being edited */
   function toggleEdit() {
-    const todoDiv = document.getElementById(todo.id).parentElement;
-    const todoFormDiv = todoDiv.previousSibling;
+    let todoDiv = document.getElementById(todo.id).parentElement;
+    let todoFormDiv = todoDiv.previousSibling;
     if ( todoDiv.style.display === "none"){
        todoDiv.style.display = "unset";
        todoFormDiv.style.display = "none";
