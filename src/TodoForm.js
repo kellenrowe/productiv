@@ -67,6 +67,7 @@ function TodoForm({ initialFormData = {title:"", description:"", priority:""}, h
                     onChange={handleChange}
                     className="form-control form-control-sm d-inline-flex"
             >
+              <option value=''>Please select a priority</option>
               <option value={1}>Ultra-Über</option>
               <option value={2}>Über</option>
               <option value={3}>Meh</option>

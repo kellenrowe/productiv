@@ -27,11 +27,11 @@ function TodoApp({ initialTodos }) {
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
-    const updateIdx = todos.map((t, idx) => { if (t.id === updatedTodo.id) { return idx } })[0]
-    console.log(updateIdx);
-    let Updatedtodos = [...todos];
-    Updatedtodos[updateIdx] = updatedTodo;
-    setTodos(Updatedtodos);
+    setTodos(todos =>
+      todos.map(todo =>
+        todo.id === updatedTodo.id ? updatedTodo : todo,
+      ),
+    );
   }
 
   /** delete a todo by id */
@@ -39,6 +39,7 @@ function TodoApp({ initialTodos }) {
     setTodos(todos => todos.filter(t => t.id !== id));
   }
 
+  /** render editable todo list */
   function renderEditableTodos() {
     if (todos.length > 0) {
       return (<div className="col-md-6">
@@ -46,6 +47,8 @@ function TodoApp({ initialTodos }) {
     }
     return (<span className="text-muted">You have no todos.</span>);
   }
+
+  /** render top todo */
   function renderTopTodo() {
     if (todos.length > 0) {
       return (
